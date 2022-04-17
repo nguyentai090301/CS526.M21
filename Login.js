@@ -1,4 +1,3 @@
-
 // Login.js
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button, Image, SafeAreaView, Alert} from 'react-native'

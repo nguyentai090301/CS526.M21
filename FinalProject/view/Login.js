@@ -43,6 +43,13 @@ export default function Login({navigation}) {
                     Login
                   </Text>
                 </TouchableOpacity>
+                <TouchableOpacity style = {{ backgroundColor: 'blue', height: 40, width: 60, alignItems: 'center', alignContent: 'center'}}
+                onPress={() => navigation.navigate('SignUp')}
+                >
+                  <Text style = {{color: 'white'}}>
+                    SignUp
+                  </Text>
+                </TouchableOpacity>
             </View>
         );
     }

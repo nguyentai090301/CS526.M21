@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React,  {useState, Component} from "react";
 import {View, Alert, Text, Navigator, TouchableOpacity, TextInput} from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
@@ -20,36 +20,54 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 
-
+//19522154@gm.uit.edu.vn
+//KTCaps09032001
 export default function Login({navigation}) {  
+  const [mail, setMail] = useState('');
+  const [pass, setPass] = useState('');
 
-        return (
-            <View style = {{flex: 1, backgroundColor: '#EDE3AF', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                <TextInput
-                style = {{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, margin: 10}}
-                
-                
-                >
-                </TextInput>
-                <TextInput
-                style = {{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, margin: 10}}
 
-                >
-                </TextInput>
-                <TouchableOpacity style = {{ backgroundColor: 'blue', height: 40, width: 60, alignItems: 'center', alignContent: 'center'}}
-                onPress={() => navigation.navigate('TrangChu')}
-                >
-                  <Text style = {{color: 'white'}}>
-                    Login
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity style = {{ backgroundColor: 'blue', height: 40, width: 60, alignItems: 'center', alignContent: 'center'}}
-                onPress={() => navigation.navigate('SignUp')}
-                >
-                  <Text style = {{color: 'white'}}>
-                    SignUp
-                  </Text>
-                </TouchableOpacity>
-            </View>
-        );
-    }
+  const auth = getAuth();
+  const handleLogin = () => {
+  signInWithEmailAndPassword(auth, mail, pass)
+    .then((userCredential) => {
+      // Signed in 
+      Alert.alert('Đăng nhập thành công!!!');
+      navigation.navigate('TrangChu');
+      // ...
+    })
+    .catch((error) => {
+      Alert.alert('Đăng nhập thất bại!!!');
+      // ..
+    });
+  }
+  return (
+      <View style = {{flex: 1, backgroundColor: '#EDE3AF', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+          <TextInput
+            style = {{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, margin: 10}}
+            onChangeText={newText => setMail(newText)}        
+          >
+          </TextInput>
+
+          <TextInput
+            style = {{height: 40, width: '80%', borderColor: 'gray', borderWidth: 1, margin: 10}}
+            onChangeText={newText => setPass(newText)}
+          >
+          </TextInput>
+          <TouchableOpacity style = {{ backgroundColor: 'blue', height: 40, width: 60, alignItems: 'center', alignContent: 'center'}}
+          onPress={handleLogin}
+          >
+            <Text style = {{color: 'white'}}>
+              Login
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style = {{ backgroundColor: 'blue', height: 40, width: 60, alignItems: 'center', alignContent: 'center'}}
+          onPress={() => navigation.navigate('SignUp')}
+          >
+            <Text style = {{color: 'white'}}>
+              SignUp
+            </Text>
+          </TouchableOpacity>
+      </View>
+  );
+}

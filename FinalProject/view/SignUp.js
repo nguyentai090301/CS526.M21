@@ -1,7 +1,48 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Text, View, StyleSheet, TextInput,Image,TouchableOpacity, Alert} from 'react-native';
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+const firebaseConfig = {
+  apiKey: "AIzaSyAcPvGsLVTQwHK_9GV10faSBxdyd1YeMhA",
+  authDomain: "cookingeasily-df68d.firebaseapp.com",
+  databaseURL: "https://cookingeasily-df68d-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "cookingeasily-df68d",
+  storageBucket: "cookingeasily-df68d.appspot.com",
+  messagingSenderId: "332129768284",
+  appId: "1:332129768284:web:e75b56eed500cea4346799",
+  measurementId: "G-4JZ7DHD2K3"
+};
+const app = initializeApp(firebaseConfig);
 export default function SignUp({navigation}) {
+  const [mail, setMail] = useState('');
+  const [pass, setPass] = useState('');
+  const [repass, setRepass] = useState('');
+  const [name, setName] = useState('');
+const handleSignUp = () => {
+  if (repass == pass)
+  {
+  const auth = getAuth();
+  createUserWithEmailAndPassword(auth, mail, pass)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      Alert.alert('Đăng ký thành công!!!');
+      navigation.navigate('Login')
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Alert.alert('Đăng ký thất bại!!!');
+      
+      // ..
+    });
+  }
+  else{
+    Alert.alert('Mật khẩu không khớp!!!');
+  }
+}
 return (
     <View style={styles.container}>
     <View>
@@ -15,19 +56,19 @@ return (
            <Image style={styles.Icon} source={require('../resources//SignUp.png')}></Image>
           <Text style={styles.TopText}> Create Account</Text>
           <View style={styles.UseName}>
-             <TextInput placeholder='UseName...'></TextInput>      
+             <TextInput placeholder='UseName...' onChangeText={newText => setName(newText)} ></TextInput>      
           </View>
           <View style={styles.Email}>
-              <TextInput placeholder='Email...'></TextInput>      
+              <TextInput placeholder='Email...' onChangeText={newText => setMail(newText)}></TextInput>      
           </View>
           <View style={styles.Passworld}>
-             <TextInput placeholder='Passworld...'></TextInput>      
+             <TextInput placeholder='Passworld...' onChangeText={newText => setPass(newText)}></TextInput>      
           </View>
           <View style={styles.Confirmpassworld}>
-             <TextInput placeholder='Confirmpassworld...'></TextInput>     
+             <TextInput placeholder='Confirmpassworld...' onChangeText={newText => setRepass(newText)}></TextInput>     
           </View>
           <TouchableOpacity 
-                    onPress={() => navigation.navigate('Login')}>
+                    onPress={handleSignUp}>
           <View style={styles.signupview}
           >
               

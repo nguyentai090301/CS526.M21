@@ -4,6 +4,13 @@ import { Text, View, StyleSheet, TextInput,Image,TouchableOpacity, Alert} from '
 export default function SignUp({navigation}) {
 return (
     <View style={styles.container}>
+    <View>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('Login')}
+        >
+        <Text>Đăng nhập</Text>
+        </TouchableOpacity>
+    </View>
       <View style={styles.TopView}>
            <Image style={styles.Icon} source={require('../resources//SignUp.png')}></Image>
           <Text style={styles.TopText}> Create Account</Text>

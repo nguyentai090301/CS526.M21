@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Text, View, StyleSheet, TextInput,Image,TouchableOpacity, Alert} from 'react-native';
+import { Text, View, StyleSheet, TextInput,Image,TouchableOpacity, Alert,Dimensions} from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import 'firebase/database';
+const windownWidth = Dimensions.get('window').width;
+const windownHeight= Dimensions.get('window').height;
 const firebaseConfig = {
   apiKey: "AIzaSyAcPvGsLVTQwHK_9GV10faSBxdyd1YeMhA",
   authDomain: "cookingeasily-df68d.firebaseapp.com",
@@ -13,45 +16,55 @@ const firebaseConfig = {
   appId: "1:332129768284:web:e75b56eed500cea4346799",
   measurementId: "G-4JZ7DHD2K3"
 };
-const app = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
 export default function SignUp({navigation}) {
   const [mail, setMail] = useState('');
   const [pass, setPass] = useState('');
   const [repass, setRepass] = useState('');
   const [name, setName] = useState('');
 const handleSignUp = () => {
-  if (repass == pass)
+  if (pass == '' || repass == '' ||name == ''||mail == '')
   {
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, mail, pass)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      Alert.alert('Đăng ký thành công!!!');
-      navigation.navigate('Login')
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      Alert.alert('Đăng ký thất bại!!!');
-      
-      // ..
-    });
+    Alert.alert('Vui lòng điền đầy đủ thông tin');
   }
-  else{
-    Alert.alert('Mật khẩu không khớp!!!');
+  else 
+  {
+    if (repass == pass)
+    {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, mail, pass)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        Alert.alert('Đăng ký thành công!!!');
+        // pushOnDB();
+        navigation.navigate('Login')
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Alert.alert('Đăng ký thất bại!!!');
+        
+        // ..
+      });
+    }
+    else{
+      Alert.alert('Mật khẩu không khớp!!!');
+    }
   }
 }
+// const pushOnDB = () =>{
+//   itemRef.set({
+//     email: {mail},
+//     password: {pass},
+//     name: {name}
+//   })
+// }
 return (
     <View style={styles.container}>
-    <View>
-        <TouchableOpacity
-            onPress={() => navigation.navigate('Login')}
-        >
-        <Text>Đăng nhập</Text>
-        </TouchableOpacity>
-    </View>
+
       <View style={styles.TopView}>
            <Image style={styles.Icon} source={require('../resources//SignUp.png')}></Image>
           <Text style={styles.TopText}> Create Account</Text>
@@ -67,17 +80,26 @@ return (
           <View style={styles.Confirmpassworld}>
              <TextInput placeholder='Confirmpassworld...' onChangeText={newText => setRepass(newText)}></TextInput>     
           </View>
-          <TouchableOpacity 
-                    onPress={handleSignUp}>
-          <View style={styles.signupview}
+          <View style={styles.signupview}>
+          <TouchableOpacity
+          onPress={handleSignUp}
           >
-              
+
               <Text style={{fontSize:20,fontWeight:'bold'}}> Sign Up</Text>
-          </View>
+
           </TouchableOpacity>
-      </View>
+          </View>
+          <View style = {styles.signupview}>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Login')}
+            >
+              <Text style = {{fontSize:20,fontWeight:'bold'}}>Đăng nhập</Text>
+            </TouchableOpacity>
+          </View>
+          </View>
       
     </View>
+    
   );
 }
 const styles = StyleSheet.create({
@@ -87,16 +109,15 @@ const styles = StyleSheet.create({
   },
     TopText:{
       fontSize:30,
-      paddingTop:30,
+      paddingTop:0,
       fontWeight:'bold'
 
     },
     TopView:{
-        marginTop:20,
+        marginTop:0.10*windownWidth,
         alignItems:'center',
         backgroundColor:'white',
-        width:'90%',
-        height:'80%',
+        width:0.9*windownWidth,
         marginHorizontal:18,
         borderRadius:20
     },
@@ -104,7 +125,7 @@ const styles = StyleSheet.create({
       marginTop:30,
       backgroundColor:'#C0C0C0',
       width:'80%',
-      height:'5%',
+      height:40,
       paddingVertical:10,
       paddingHorizontal:10,
       borderRadius:20
@@ -113,7 +134,7 @@ const styles = StyleSheet.create({
       marginTop:30,
       backgroundColor:'#C0C0C0',
       width:'80%',
-      height:'5%',
+      height:40,
       paddingVertical:10,
       paddingHorizontal:10,
       borderRadius:20
@@ -122,7 +143,7 @@ const styles = StyleSheet.create({
       marginTop:30,
       backgroundColor:'#C0C0C0',
       width:'80%',
-      height:'5%',
+      height:40,
       paddingVertical:10,
       paddingHorizontal:10,
       borderRadius:20
@@ -131,21 +152,24 @@ const styles = StyleSheet.create({
       marginTop:30,
       backgroundColor:'#C0C0C0',
       width:'80%',
-      height:'5%',
+      height:40,
       paddingVertical:10,
       paddingHorizontal:10,
       borderRadius:20
     } ,
     Icon:{
-      marginTop:30
+      marginTop:30,
+      resizeMode: 'contain',
+      height: '10%',
+      width: '10%'
     }  ,
     signupview:{
-      width:160,
-      height:45,
+      width:0.4*windownWidth,
+      height:0.08*windownWidth,
       borderColor:'white',
       borderWidth:1,
       borderRadius:30,
-      marginTop:40,
+      marginTop:10,
       backgroundColor:'#00FFFF',
       alignItems:'center',
       justifyContent:'center'

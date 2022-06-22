@@ -19,7 +19,7 @@ export default function ChiTiet({navigation}) {
     <View style={{flex:1}}>
       <View>
       <TouchableOpacity
-      onPress={()=>navigation.navigate('TrangChu')}
+      onPress={()=>navigation.navigate('themmon')}
       >
         <Image source={require('../resources/back.png')}></Image>
       </TouchableOpacity>
@@ -60,8 +60,11 @@ export default function ChiTiet({navigation}) {
                         <Text style={{fontSize:20,marginTop:20}}> Thit ba rọi (ai không lấy nạc cũng được)</Text>
                         <Text style={{fontSize:20,marginTop:20}}> Gia vị: Đường, Muối, Nước Mắm, Tiêu, Nước Lọc,Bột Ngọt, Hạt Nêm</Text>
                     </View>
+
                     <View style={{marginTop:20}}>
                         <Text style={{fontSize:25,fontWeight:'bold'}}> Cách Làm</ Text>
+
+                        
                         <FlatList
                           data={
                             [

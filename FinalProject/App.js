@@ -8,12 +8,15 @@ import SignUp from './view/SignUp.js';
 import TrangChu from './view/TrangChu';
 import TimKiem from './view/TimKiem.js'; 
 import KetQuaTimKiem from './view/KetQuaTimKiem.js'
+import themmon from './view/themmon.js';
 
 const Stack = createNativeStackNavigator();
 const MyStack = ()=> {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = 'SignUp' screenOptions={{headerShown: false}} >
+      <Stack.Navigator initialRouteName = 'themmon' screenOptions={{headerShown: false}} >
+      <Stack.Screen name="themmon" component={themmon} />
+
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ChiTiet" component={ChiTiet} />     
         <Stack.Screen name="SignUp" component={SignUp} />

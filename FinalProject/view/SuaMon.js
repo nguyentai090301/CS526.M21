@@ -9,7 +9,7 @@ const images = {
   step3 : require('../resources/3.png'),
   step4 : require('../resources/4.png')
 }
-export default function addnewfood({navigation}) {
+export default function SuaMon({navigation}) {
 
     // tên món ăn, 
     // mô tả món ăn, 
@@ -37,11 +37,11 @@ export default function addnewfood({navigation}) {
 
 
     const handleSave = ()=>{
-        navigation.navigate('ChiTiet')
+        navigation.navigate('TrangChu')
     }
 
     const handleChooseImg = ()=>{
-        // navigation.navigate('themmon')
+        navigation.navigate('themmon')
 
     }
 
@@ -90,7 +90,7 @@ export default function addnewfood({navigation}) {
 
             {/* ten mon an */}
                 <View style={{marginTop:0.10*windownWidth,alignItems:'center',width:0.9*windownWidth,marginHorizontal:18}}>
-                    <Text style={{fontSize:25,marginTop:20,fontWeight:'bold'}}> Món ăn </Text>
+                    <Text style={{fontSize:25,marginTop:20,fontWeight:'bold'}}>Chỉnh sửa món ăn </Text>
 
                     <View style={styles.Text_in}>
                         <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Tên món ăn ' onChangeText={newText => setNameF(newText)} ></TextInput>      

@@ -99,6 +99,7 @@ const TrangChu = ({navigation}) => {
         backgroundColor: '#fff',
         borderRadius: 100,
         }}
+        onPress={()=>navigation.navigate('addnewfood')}
     >
         <Image source={require('../resources/plus.png')}></Image>
     </TouchableOpacity>

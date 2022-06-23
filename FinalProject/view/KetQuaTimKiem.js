@@ -33,7 +33,7 @@ export default function KetQuaTimKiem({navigation}) {
           data={
             [ 
               {key:'1',heading:'Thịt kho tiêu đơn giản',img1:'../resources/Icon3.png',namecook:'A Phủ',heading1:'Thịt ba rọi, Gia vị: đường, muối tiêu, hạt nêm, nước màu, nước mắm ',img2:'../resources/ThitHeo1.png'},
-              {key:'2',heading:'Thịt kho tiêu đơn giản',img1:'../resources/Icon3.png',namecook:'Mị',heading1:'Thịt ba rọi thật ngon',img2:'../resources/ThitHeo1.png'},
+              {key:'2',heading:'Thịt kho tiêu đơn giản',img1:'../resources/Icon3.png',namecook:'Mị Châu',heading1:'Thịt ba rọi thật ngon',img2:'../resources/ThitHeo1.png'},
               {key:'3',heading:'Thịt kho tiêu đơn giản',img1:'../resources/Icon3.png',namecook:'Công Chúa Thủy Tề',heading1:'Thịt ba chỉ ít mỡ, Gia vị: đường, muối tiêu, hạt nêm, nước màu, nước mắm ',img2:'../resources/ThitHeo1.png'},
               {key:'4',heading:'Thịt kho tiêu đơn giản',img1:'../resources/Icon3.png',namecook:'Tùng Trọc',heading1:'Thịt ba rọi, Gia vị: đường, muối tiêu, hạt nêm, nước màu, nước mắm ',img2:'../resources/ThitHeo1.png'},
             ]

@@ -35,7 +35,7 @@ export default function ChiTiet({navigation}) {
                 <View style={{flexDirection:'row'}}>
                     <Image source={require('../resources/DauBep1.jpg')} style={{marginLeft:10,marginTop:10}}></Image>
                     <View>
-                        <Text style={{paddingLeft:40,paddingTop:30,fontSize:20,fontWeight:'bold'}}> Lâm Võ </Text>
+                        <Text style={{paddingLeft:40,paddingTop:30,fontSize:20,fontWeight:'bold'}}> Mị Châu </Text>
                         <Text  style={{paddingLeft:40,fontSize:20}}>@cook_24683579 </Text>
                     </View>
                 </View>
@@ -63,6 +63,8 @@ export default function ChiTiet({navigation}) {
                     <View style={{marginTop:20}}>
                         <Text style={{fontSize:25,fontWeight:'bold'}}> Cách Làm</ Text>
                         <FlatList
+                          numColumns={2}
+                          horizontal = {false}
                           data={
                             [
                               {key:'1', imgstep: images.step1, img1: images.buoc1,makefood:'Cắt thịt theo miếng vừa ăn và đem ướp với các gia vị ( 1 ít tiêu, hạt nêm, đường, nước, mắm, tỏi, ớt) trong 15p ',img2:'../resources/ThitUop.png'},

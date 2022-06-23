@@ -8,18 +8,24 @@ import SignUp from './view/SignUp.js';
 import TrangChu from './view/TrangChu';
 import TimKiem from './view/TimKiem.js'; 
 import KetQuaTimKiem from './view/KetQuaTimKiem.js'
+import addnewfood from './view/addnewfood.js';
+import editfood from './view/editfood.js';
 
 const Stack = createNativeStackNavigator();
 const MyStack = ()=> {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = 'SignUp' screenOptions={{headerShown: false}} >
+      <Stack.Navigator initialRouteName = 'TrangChu' screenOptions={{headerShown: false}} >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ChiTiet" component={ChiTiet} />     
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="TrangChu" component={TrangChu} />
         <Stack.Screen name="TimKiem" component={TimKiem} />
         <Stack.Screen name="KetQuaTimKiem" component={KetQuaTimKiem} />
+        <Stack.Screen name="addnewfood" component={addnewfood} />
+        <Stack.Screen name="editfood" component={editfood} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

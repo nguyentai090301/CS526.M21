@@ -15,15 +15,46 @@ const images = {
   step4 : require('../resources/4.png')
 }
 export default function ChiTiet({navigation}) {
+
+  // function to handel edit or delete food 
+  const handleEdit = ()=>{
+    navigation.navigate('editfood')
+  }
+
+  const handleDelete = ()=>{
+    // navigation.navigate('chitiet')
+  }
+
   return(
     <View style={{flex:1}}>
-      <View>
-      <TouchableOpacity
-      onPress={()=>navigation.navigate('TrangChu')}
-      >
-        <Image source={require('../resources/back.png')}></Image>
-      </TouchableOpacity>
+
+      <View style={{flexDirection:"row", justifyContent:"space-between"}}>
+        {/* button back  */}
+        <View>
+          <TouchableOpacity
+          onPress={()=>navigation.navigate('themmon')}>
+            <Image source={require('../resources/back.png')} style={{width:0.1*windownWidth, height:0.05*windownHeight,borderRadius:10, resizeMode: "contain", marginVertical:10, marginHorizontal:5}} ></Image>
+          </TouchableOpacity>
+        </View>
+
+        <View  style={{flexDirection:"row", justifyContent:"space-between"}}>
+          {/* button edit  */}
+          <View>
+            <TouchableOpacity
+            onPress={handleEdit}>
+              <Image source={require('../resources/edit.png')} style={{width:0.1*windownWidth, height:0.05*windownHeight,borderRadius:10, resizeMode: "contain", marginVertical:10, marginHorizontal:5}}></Image>
+            </TouchableOpacity>
+          </View>
+            {/* button delete  */}
+          <View>
+            <TouchableOpacity
+            onPress={handleDelete}>
+              <Image source={require('../resources/bin.png')} style={{width:0.1*windownWidth, height:0.05*windownHeight,borderRadius:10, resizeMode: 'contain', marginVertical:10, marginHorizontal:5}}></Image>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
+
         <View style={{height:0.3*windownHeight,backgroundColor:'white',flexDirection:'row'}}>
             <Image style={{height:0.3*windownHeight,width:windownWidth}} source={require('../resources/ThitKhoTieu.jpg')}></Image>
         </View>

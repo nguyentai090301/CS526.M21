@@ -18,7 +18,7 @@ export default function ChiTiet({navigation}) {
 
   // function to handel edit or delete food 
   const handleEdit = ()=>{
-    navigation.navigate('editfood')
+    navigation.navigate('SuaMon')
   }
 
   const handleDelete = ()=>{
@@ -32,7 +32,7 @@ export default function ChiTiet({navigation}) {
         {/* button back  */}
         <View>
           <TouchableOpacity
-          onPress={()=>navigation.navigate('themmon')}>
+          onPress={()=>navigation.navigate('TrangChu')}>
             <Image source={require('../resources/back.png')} style={{width:0.1*windownWidth, height:0.05*windownHeight,borderRadius:10, resizeMode: "contain", marginVertical:10, marginHorizontal:5}} ></Image>
           </TouchableOpacity>
         </View>

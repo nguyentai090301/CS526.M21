@@ -21,7 +21,7 @@ export default function ThemMon({navigation}) {
 
 
     const [nameF, setNameF] = useState('');
-    const [cpntent, setContent] = useState('');
+    const [content, setContent] = useState('');
     const [solu, setSolu] = useState('');
     const [time, setTime] = useState('');
    
@@ -33,11 +33,64 @@ export default function ThemMon({navigation}) {
     const [f_step3, setf_step3] = useState('');
     const [f_step4, setf_step4] = useState('');
 
+    // Ảnh món ăn 
+    const [image_url_monan, set_image_url_monan] = useState('');
+    //Ảnh các bước 1,2,3,4 
+    const [image_url1, set_image_url_step1] = useState('');
+    const [image_url2, set_image_url_step2] = useState('');
+    const [image_url3, set_image_url_step3] = useState('');
+    const [image_url4, set_image_url_step4] = useState('');
 
+
+
+
+    var monan = {
+        tenmon:"",
+        mmota_mon:"",
+        soluong:"",
+        timeF:"",
+        nguyenlieu:"",
+        giaviF:"",
+        buoc1:"",
+        buoc2:"",
+        buoc3:"",
+        buoc4:"",
+        image_url_mon:"",
+        image_step1:"",
+        image_step2:"",
+        image_step3:"",
+        image_step4:"",
+    }
+
+
+
+    const addDetail = ()=>{
+
+        monan.tenmon = nameF,
+        monan.mmota_mon = content,
+        monan.soluong = solu,
+        monan.timeF = time,
+        monan.nguyenlieu = nglieu,
+        monan.giaviF = giavi,
+        monan.buoc1 = f_step1,
+        monan.buoc2 = f_step2,
+        monan.buoc3 = f_step3,
+        monan.buoc4 = f_step4,
+
+        monan.image_url_mon = image_url_monan,
+        monan.image_step1= image_url1,
+        monan.image_step2=image_url2,
+        monan.image_step3=image_url3,
+        monan.image_step4=image_url4
+
+    }
 
 
     const handleSave = ()=>{
+        addDetail()
+
         navigation.navigate('ChiTiet')
+
     }
 
     const handleChooseImg = ()=>{
@@ -90,22 +143,22 @@ export default function ThemMon({navigation}) {
 
             {/* ten mon an */}
                 <View style={{marginTop:0.10*windownWidth,alignItems:'center',width:0.9*windownWidth,marginHorizontal:18}}>
-                    <Text style={{fontSize:25,marginTop:20,fontWeight:'bold'}}> Món ăn </Text>
+                    <Text style={{fontSize:25,marginTop:20,fontWeight:'bold'}}> Thêm món ăn </Text>
 
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Tên món ăn ' onChangeText={newText => setNameF(newText)} ></TextInput>      
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Tên món ăn ' onChangeText={newText => setNameF(newText)} value={nameF}></TextInput>      
                     </View>
 
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Mô tả món ăn ' onChangeText={newText => setContent(newText)} ></TextInput>      
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Mô tả món ăn ' onChangeText={newText => setContent(newText)} value={content}></TextInput>      
                     </View>
 
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Khẩu phần ăn ' onChangeText={newText => setSolu(newText)} ></TextInput>      
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Khẩu phần ăn ' onChangeText={newText => setSolu(newText)} value={solu} ></TextInput>      
                     </View>
 
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Thời gian nấu ' onChangeText={newText => setTime(newText)} ></TextInput>      
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Thời gian nấu ' onChangeText={newText => setTime(newText)} value={time} ></TextInput>      
                     </View>
                 </View>
 
@@ -117,11 +170,11 @@ export default function ThemMon({navigation}) {
                     
                     {/* nl  */}
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder=' Nguyên liệu thô ' onChangeText={newText => setNglieu(newText)} ></TextInput>   
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder=' Nguyên liệu thô ' onChangeText={newText => setNglieu(newText)} value={nglieu} ></TextInput>   
                     </View>
                 
                     <View style={styles.Text_in}>
-                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder=' Gia vị ' onChangeText={newText => setGiavi(newText)} ></TextInput>      
+                        <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder=' Gia vị ' onChangeText={newText => setGiavi(newText)} value={giavi}></TextInput>      
                     </View>
 
                 </View>
@@ -149,7 +202,7 @@ export default function ThemMon({navigation}) {
                             </View>
 
                             <View style={styles.content}>
-                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 1 ' onChangeText={newText => setf_step1(newText)} ></TextInput>      
+                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 1 ' onChangeText={newText => setf_step1(newText)} value={f_step1} ></TextInput>      
                             </View>
                         </View>
 
@@ -166,7 +219,7 @@ export default function ThemMon({navigation}) {
                             </View>
 
                             <View style={styles.content}>
-                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 2 ' onChangeText={newText => setf_step2(newText)} ></TextInput>      
+                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 2 ' onChangeText={newText => setf_step2(newText)} value={f_step2}></TextInput>      
                             </View>
                         </View>
 
@@ -183,7 +236,7 @@ export default function ThemMon({navigation}) {
                             </View>
 
                             <View style={styles.content}>
-                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 3 ' onChangeText={newText => setf_step3(newText)} ></TextInput>      
+                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 3 ' onChangeText={newText => setf_step3(newText)} value={f_step3} ></TextInput>      
                             </View>
                         </View>
 
@@ -199,7 +252,7 @@ export default function ThemMon({navigation}) {
                             </View>
 
                             <View style={styles.content}>
-                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 4 ' onChangeText={newText => setf_step4(newText)} ></TextInput>      
+                                <TextInput style={{fontSize:16, fontWeight:'bold'}} placeholder='Bước 4 ' onChangeText={newText => setf_step4(newText)} value={f_step4} ></TextInput>      
                             </View>
                         </View>
 
